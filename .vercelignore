@@ -1,0 +1,3 @@
+# Dev-only files: the runtime is fully inlined in index.html
+source/
+*.md
