@@ -248,5 +248,28 @@ const params=new URLSearchParams(location.search),local=location.hostname==='127
 })();
 
 </script>
+<script id="section-snap">
+/* Gentle per-section snap. When a scroll settles and the next section's top is a short way
+   ahead in the direction of travel, glide to it. It never pulls backward, so it can't fight
+   the reader, and sections taller than the screen still scroll freely. */
+(()=>{
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)'),RANGE=.25,SETTLE_MS=140;
+  let lastY=scrollY,timer=0,touching=false;
+  const settle=()=>{
+    if(touching)return;
+    const y=scrollY,dir=Math.sign(y-lastY);lastY=y;
+    if(!dir||reduce.matches)return;
+    for(const s of document.querySelectorAll('main>section')){
+      const top=Math.round(s.getBoundingClientRect().top+y),ahead=(top-y)*dir;
+      if(ahead>2&&ahead<innerHeight*RANGE){scrollTo({top,behavior:'smooth'});return}
+    }
+  };
+  const queue=()=>{clearTimeout(timer);timer=setTimeout(settle,SETTLE_MS)};
+  addEventListener('scroll',queue,{passive:true});
+  addEventListener('touchstart',()=>{touching=true},{passive:true});
+  addEventListener('touchend',()=>{touching=false;queue()},{passive:true});
+  addEventListener('touchcancel',()=>{touching=false;queue()},{passive:true});
+})();
+</script>
 </body>
 </html>
