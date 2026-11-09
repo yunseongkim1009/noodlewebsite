@@ -943,8 +943,8 @@ input[type=range]{width:100%;accent-color:var(--orange);height:28px}
     const s = fit(swarm); sctx = s.ctx; SW = s.W; SH = s.H;
     const narrow = SW < 700;
     const head = { x: roof.x + roof.w * 0.5 + dw * 0.25, y: roof.y - dw * 0.6 };
-    const R = narrow ? Math.min(SW * 0.22, 100) : Math.min(SW * 0.17, 210);
-    const C = narrow ? { x: SW * 0.5, y: SH * 0.64 } : { x: SW * 0.7, y: SH * 0.3 };
+    const R = narrow ? Math.min(SW * 0.22, 100) : Math.min(SW * 0.15, 190);
+    const C = narrow ? { x: SW * 0.5, y: SH * 0.64 } : { x: SW * 0.7, y: Math.max(SH * 0.36, R * 1.05 + 60) };
     // a thought bubble: lumpy cloud plus two small bubbles trailing down to Noodle's head
     const blobs = [];
     const lumps = 9;
