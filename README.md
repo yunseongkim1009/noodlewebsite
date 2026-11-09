@@ -1,3 +1,8 @@
+# Think First: Noodle website
+
+- `/` (index.html): the dusk promo site. One self-contained HTML file; screenshots in `shots/`.
+- `/3d` (3d/index.html): the earlier 3D Noodle site (notes below).
+
 # Noodle v7
 
 index.html을 정적 호스팅에 올리거나 최신 브라우저에서 여세요. 모델·이미지·Three.js가 HTML 안에 들어 있어 런타임 빌드나 설치가 필요 없습니다.
